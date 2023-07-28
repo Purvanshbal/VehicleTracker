@@ -1,0 +1,203 @@
+<!-- Script inspired from tutorial provided in PrairieLearn Tutorial -->
+<!-- Code on the repository free for open use. Permission granted by TA for free use of -->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>E Car Tracker</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" href="{{ url_for('static', filename='img/cs.ico') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/custom.css') }}">
+
+    </head>
+    <body>
+        <div class="container">    
+        <!-- Button trigger modal -->
+        <div style="text-align: left;">
+        <u><h2>Main Menu</h2></u>
+        <hr>
+        <br>
+        </div>
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <button type="button" data-bs-toggle="modal" data-bs-target="#create-modal">Add Vehicle</button>
+        &nbsp;&nbsp; &nbsp;&nbsp; 
+        <button type="button" data-bs-toggle="modal" data-bs-target="#delete-modal">Delete Vehicle</button>
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <button type="button" data-bs-toggle="modal" data-bs-target="#update-modal">Update Status</button>
+        &nbsp;&nbsp; &nbsp;&nbsp; 
+        <button type="button" data-bs-toggle="modal" data-bs-target="#search-modal">Search Database</button>
+        &nbsp;&nbsp; &nbsp;&nbsp; 
+        <button type="button" onclick="location.href='custom.html'">Custom Queries</button>    
+        </div>
+
+        
+        <div class="modal fade" id="create-modal" tabindex="-1" aria-labelledby="Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="Label"><u>Add a Vehicle to the Database</u></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Vehicle Id</span>
+                    <input type="text" id = "id"class="form-control" placeholder="Enter the unique vehicle id" aria-label="i" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Brand</span>
+                    <input type="text" id = "brand" class="form-control" placeholder="Enter the Manfucaturing Company" aria-label="b" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Model</span>
+                    <input type="text" id = "model" class="form-control" placeholder="Enter the Model Name" aria-label="m" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Price</span>
+                    <input type="text" id = "price" class="form-control" placeholder="0" aria-label="p" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Average Maintenance Cost</span>
+                    <input type="text" id = "avg" class="form-control" placeholder="0" aria-label="dhoom machale" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Upcoming/Current</span>
+                    <input type="text" id = "stat" class="form-control" placeholder="Only takes two values: Upcoming or Current (Case sensitive)" aria-label="s" aria-describedby="basic-addon1">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="submit-vehicle" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="Label"><u>Delete a Vehicle from the Database Using Vehicle ID</u></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="task-form-display">Vehicle Id</span>
+                    <input type="text" class="form-control" placeholder="Enter the unique vehicle id" aria-label="id" aria-describedby="basic-addon1">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="delete-vehicle" type="button" class="btn btn-primary">Delete Vehicle</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="Label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Label"><u>Search the Database using a keyword</u></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+    
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="l">Enter Keyword</span>
+                        <input type="text" class="form-control" placeholder="Enter a keyword to search the database" aria-label="id" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="search-database" type="button" class="btn btn-primary">Search</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+        <div class="modal fade" id="update-modal" tabindex="-1" aria-labelledby="Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="Label"><u>Update the status (Upcoming/Current) of a Vehicle</u></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Brand</span>
+                    <input type="text" id = "update-brand"class="form-control" placeholder="Enter the Manufacturing Company" aria-label="i" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Model</span>
+                    <input type="text" id = "update-model" class="form-control" placeholder="Enter the Model Name" aria-label="b" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Upcoming or Current</span>
+                    <input type="text" id = "update-stat" class="form-control" placeholder="Enter the New Status" aria-label="m" aria-describedby="basic-addon1">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="update-status" type="button" class="btn btn-primary">Update</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <hr>
+
+        <!-- Table for Displaying the Number of Cars by each brand-->
+        <div class="table-container center">    
+            <div style="text-align: center;">
+            <u><h2>Number of Cars By Brand</h2></u>
+            <hr>
+            <br>
+            </div>
+
+        <div class="table-responsive">          
+            <table class="table" align="center">
+                <thead>
+                <tr>
+                    <th class="Brand">Brand</th>
+                    <th class="Number">Number of Cars per brand</th>
+                </tr>
+                </thead>
+        
+                <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{item.brand}}</td>
+                        <td>{{item.number}}</td>
+                    </tr>
+                {% endfor %}
+                
+                </tbody>
+            </table>
+        </div>
+        </div>
+        
+  </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='script/modal.js') }}"></script>
+
+</html>

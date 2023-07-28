@@ -1,0 +1,88 @@
+<!-- Script inspired from tutorial provided in PrairieLearn Tutorial -->
+<!-- Code on the repository free for open use. Permission granted by TA for free use of -->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>E Car Tracker Custom Queries</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/custom.css') }}">
+
+    </head>
+    <body>
+
+        <div class="query-container center">    
+        <div style="text-align: left;">
+        <u><h2>Query 1</h2></u>
+        <h5> The first query is to find the vehicle id, Brand, Model, Charger type of vehicles from different companies with different charger types.<br>
+             Currently we allow this functionality for two such combinations. </h5>
+        <hr>
+        <br>
+        </div>
+
+       <center> <button type="button" id="Query1">Run Query</button>
+       </center>
+
+       <br>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Brand-1</span>
+            <input type="text" id = "Brand-1"class="form-control" placeholder="Enter the name of first brand" aria-label="i" aria-describedby="basic-addon1">
+        </div>
+        
+        Select a Charger Type:
+        <input type="radio" id="AC1" name="C-Type" value="AC">
+        <label for="AC1">AC</label>
+        <input type="radio" id="DC1" name="C-Type" value="DC">
+        <label for="DC1">DC</label><br>
+
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Brand-2</span>
+            <input type="text" id = "Brand-2"class="form-control" placeholder="Enter the name of second brand" aria-label="i" aria-describedby="basic-addon1">
+        </div>
+        
+        Select a Charger Type:
+        <input type="radio" id="AC2" name="C-Type2" value="AC">
+        <label for="AC2">AC</label>
+        <input type="radio" id="DC2" name="C-Type2" value="DC">
+        <label for="DC2">DC</label><br>
+        
+    </div>
+    </div>
+        <br>
+        <br>
+        <br>
+        <hr>       
+        <div class="query-container center">    
+        <div style="text-align: left;">
+            <u><h2>Query 2</h2></u>
+            <h5> The second query is to display the Brands, and average Price of vehicles that have average price less than the average price of all Vehicles of a given brand </h5>
+            <hr>
+            <br>
+            </div>
+    
+           <center> <button type="button" id="Query2">Run Query</button>
+           </center>
+    
+           <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Brand</span>
+                <input type="text" id = "bq2"class="form-control" placeholder="Enter the name of desired brand for the query" aria-label="i" aria-describedby="basic-addon1">
+            </div>
+            
+        </div>
+        </div>
+  </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='script/modal.js') }}"></script>
+
+</html>

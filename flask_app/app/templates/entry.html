@@ -1,0 +1,100 @@
+<!-- Script inspired from tutorial provided in PrairieLearn Tutorial -->
+<!-- Code on the repository free for open use. Permission granted by TA for free use of -->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>E Car Tracker</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/custom.css') }}">
+
+    </head>
+    <body style = "background-image: url({{ url_for('static', filename='img/Electric.png') }});" text>
+        <div class="container"> 
+        <div style="text-align: center;">
+        <u><h1 style="color:dodgerblue">Welcome to EV tracker</h1></u>
+        <hr>
+        <br>
+        </div>
+        </div>
+
+        <div class="login-container center">    
+                <div style="display: block; align-items: center;">
+                    <p style="text-align:center;">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#user-modal" style="border: white;" >User Login</button>
+                    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#employee-modal">Employee Login</button>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                </p>
+                </div>
+        </div>
+
+
+        <div class="modal fade" id="user-modal" tabindex="-1" aria-labelledby="Label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Label"><u>Please enter your Credentials</u></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+    
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">User Id</span>
+                        <input type="text" id = "user-id"class="form-control" placeholder="Enter your user id" aria-label="hello" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Password</span>
+                        <input type="text" id = "user-password" class="form-control" placeholder="Enter your password" aria-label="b" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="user-login" type="button" class="btn btn-primary">Login</button>
+                </div>
+                </div>
+            </div>
+            </div>
+    
+
+            <div class="modal fade" id="employee-modal" tabindex="-1" aria-labelledby="Label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Label"><u>Please enter your Employee Credentials</u></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+        
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Employee Id</span>
+                            <input type="text" id = "employee-id"class="form-control" placeholder="Enter your Employee id" aria-label="hello" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Password</span>
+                            <input type="text" id = "employee-password" class="form-control" placeholder="Enter your password" aria-label="b" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+        
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="employee-login" type="button" class="btn btn-primary">Login</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+  </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='script/modal.js') }}"></script>
+
+</html>
